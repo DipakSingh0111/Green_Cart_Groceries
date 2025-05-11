@@ -7,6 +7,7 @@ import { useContext } from 'react';
 import { AppContext } from './context/AppContext';
 import Login from './components/Login';
 import AllProducts from './pages/AllProducts';
+import ProductCategory from './pages/ProductCategory';
 function App() {
   const isSellerPath = useLocation().pathname.includes("seller");
   const { showUserLogin } = useContext(AppContext)
@@ -22,6 +23,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/products' element={<AllProducts />} />
+          <Route path='/products/:category' element={<ProductCategory />} />
         </Routes>
       </div>
       {!isSellerPath && <Footer />}

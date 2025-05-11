@@ -2,11 +2,12 @@ import { useContext } from "react";
 import { assets } from "../assets/assets";
 import { AppContext } from "../context/AppContext";
 
+
 const ProductCard = ({ product }) => {
-    const { currency, addToCart, removeFromCart, cartItems } = useContext(AppContext);
+    const { currency, addToCart, removeFromCart, cartItems, navigate } = useContext(AppContext);
 
     return product && (
-        <div className="border border-gray-500/20 rounded-md px-3 py-2 bg-white w-full max-w-[220px] sm:max-w-full">
+        <div onClick={() => { navigate(`/products/${product.category.toLowerCase()}/${product._id}`); scrollTo(0, 0) }} className="border border-gray-500/20 rounded-md px-3 py-2 bg-white w-full max-w-[220px] sm:max-w-full">
             <div className="group cursor-pointer flex items-center justify-center px-2">
                 <img className="group-hover:scale-105 transition max-h-36 object-contain" src={product.image[0]} alt={product.name} />
             </div>
