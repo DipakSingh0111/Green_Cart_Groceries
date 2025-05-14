@@ -5,7 +5,7 @@ import { useAppContext } from '../context/AppContext';
 
 const Navbar = () => {
     const [open, setOpen] = React.useState(false);
-    const { user, setUser, setShowUserLogin, navigate, setSearchQuery, searchQuery } = useAppContext();
+    const { user, setUser, setShowUserLogin, navigate, setSearchQuery, searchQuery, getCartCount } = useAppContext();
 
 
     const logout = async () => {
@@ -42,7 +42,7 @@ const Navbar = () => {
                 <Link to="/cart">
                     <div className="relative cursor-pointer">
                         <img src={assets.cart_icon} alt="cart-icon" className='w-6 opacity-80' />
-                        <button className="absolute -top-2 -right-3 text-xs text-white bg-indigo-500 w-[18px] h-[18px] rounded-full">3</button>
+                        <button className="absolute -top-2 -right-3 text-xs text-white bg-indigo-500 w-[18px] h-[18px] rounded-full">{getCartCount()}</button>
                     </div>
                 </Link>
 
@@ -66,9 +66,18 @@ const Navbar = () => {
             </div>
 
             {/* Mobile Menu Button */}
-            <button onClick={() => setOpen(!open)} aria-label="Menu" className="sm:hidden">
-                <img src={assets.menu_icon} alt="menu-icon" />
-            </button>
+            <div className='flex items-center gap-6 sm:hidden'>
+                {/* Cart */}
+                <Link to="/cart">
+                    <div className="relative cursor-pointer">
+                        <img src={assets.cart_icon} alt="cart-icon" className='w-6 opacity-80' />
+                        <button className="absolute -top-2 -right-3 text-xs text-white bg-indigo-500 w-[18px] h-[18px] rounded-full">{getCartCount()}</button>
+                    </div>
+                </Link>
+                <button onClick={() => setOpen(!open)} aria-label="Menu"    >
+                    <img src={assets.menu_icon} alt="menu-icon" />
+                </button>
+            </div>
 
             {/* Mobile Menu Dropdown */}
             {open && (
