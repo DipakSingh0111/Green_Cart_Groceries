@@ -22,8 +22,8 @@ const ProductCard = ({ product }) => {
                 </div>
                 <div className="flex items-end justify-between mt-3 flex-wrap gap-2">
                     <p className="text-base sm:text-lg font-medium text-primary">
-                        {currency}${product.offerPrice}
-                        <span className="text-gray-500/60 text-xs sm:text-sm line-through ml-1">${product.price}</span>
+                        {currency}{product.offerPrice}
+                        <span className="text-gray-500/60 text-xs sm:text-sm line-through ml-1">{currency}{product.price}</span>
                     </p>
                     <div onClick={(e) => e.stopPropagation()} className="text-primary">
                         {!cartItems[product._id] ? (
